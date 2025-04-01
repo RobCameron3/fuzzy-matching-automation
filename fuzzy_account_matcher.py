@@ -1,3 +1,7 @@
+# Demo Version of Fuzzy Account Matcher
+# This script uses mock data and replicates the logic used in a real-world professional tool.
+# Proprietary data has been removed to protect client privacy.
+
 # %%
 import pandas as pd
 import numpy as np
@@ -18,7 +22,6 @@ accounts_df['ZIP'] = accounts_df['Address 1: ZIP/Postal Code'].copy()
 accounts_df['State'] = accounts_df['Address 1: State/Province'].copy()
 accounts_df['State'] = accounts_df['State'].str.strip()
 
-
 # %%
 accounts_df
 
@@ -26,10 +29,8 @@ accounts_df
 
 accounts_df['ZIP'] = accounts_df['ZIP'].str[:5].str.zfill(5)
 
-
 # %%
 accounts_df['Name'] = accounts_df['Name'].str.replace(' ', '')
-
 
 # %%
 retail_df = pd.read_excel(retail_df = pd.read_excel("data/unmapped_clients_sample.xlsx"))
@@ -41,7 +42,6 @@ retail_df
 retail_df['Zip'] = retail_df['Zip'].astype(str)
 retail_df['Zip'] = retail_df['Zip'].str[:5].str.zfill(5)
 retail_df.rename(columns={'Zip': 'ZIP'}, inplace=True)
-
 
 # %%
 
@@ -143,7 +143,6 @@ file_path = "data/client_report_by_zip.xlsx"
 
 # Save the DataFrame to an Excel file
 retail_matches_df_with_accounts.to_excel(file_path, index=False)
-
 
 # %%
 
